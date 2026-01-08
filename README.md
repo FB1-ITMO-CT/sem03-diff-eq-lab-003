@@ -81,15 +81,19 @@ J(1, -1) = \begin{pmatrix}0 & -4\\ 1 & 3\end{pmatrix}
 
 ## Фазовые траектории
 
-<img src="./examples/direction_map.png" style="zoom:50%;" />
+<img src="./examples/direction_map.png" style="zoom:47%;" />
 
-Карта направлений производной. Команда: `run -figsize 12:12 -out "./examples/direction_map.png" dir_map -6 -6 6 6 48`
+Карта направлений производной.
 
-<img src="./examples/trajectories.png" style="zoom:50%;" />
+Команда: `run -figsize 12:12 -out "./examples/direction_map.png" dir_map -6 -6 6 6 48`
 
-Линии графика в разных точках, полученные численным методом. Команда: `run -figsize 12:12 -out "./examples/trajectories.png" traj_map 0.1 100 -30 -30 30 30 11`
+<img src="./examples/trajectories.png" style="zoom:47%;" />
 
-<img src="./examples/around_(3;1).png" style="zoom:50%;" /><img src="./examples/around_(1;-1).png" style="zoom:50%;" />
+Линии графика в разных точках, полученные численным методом. Приближать функцию вдоль $y=0$ крайне неудобно из-за быстро изменяющейся производной и лёгкого "обрыва" при переходе за границу определённости.
+
+Команда: `run -figsize 12:12 -out "./examples/trajectories.png" traj_map 0.1 100 -30 -30 30 30 11`
+
+<img src="./examples/around_(3;1).png" style="zoom:40%;" /><img src="./examples/around_(1;-1).png" style="zoom:40%;" />
 
 Линии графика вокруг точек равновесия. Пунктиром обозначен график линеаризованной системы, совпадения что-то не наблюдается…
 
