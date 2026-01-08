@@ -1,25 +1,29 @@
 import typing as tp
-from argparse import ArgumentParser, Namespace, RawTextHelpFormatter
-from collections.abc import Callable
-from dataclasses import astuple, dataclass
+from argparse import ArgumentParser, Namespace
+
+if tp.TYPE_CHECKING:
+    from collections.abc import Callable
 
 import matplotlib.axes as mpl_ax
 import matplotlib.pyplot as plt
 import numpy as np
 
-from ..defs import vec_derivative
+from ..defs import VEC_DERIVATIVE, vec_derivative
 
 
-def runge_kutta_4(x: float, y: float, h: float) -> tuple[float, float]:
+def runge_kutta_4(x: float, y: float, h: float, f: VEC_DERIVATIVE) -> tuple[float, float]:
     v = np.array((x, y))
     h2 = h * 0.5
 
-    k1 = vec_derivative(*v)
-    k2 = vec_derivative(*(v + k1 * h2))
-    k3 = vec_derivative(*(v + k2 * h2))
-    k4 = vec_derivative(*(v + k3 * h))
+    k1 = f(*v)
+    k2 = f(*(v + k1 * h2))
+    k3 = f(*(v + k2 * h2))
+    k4 = f(*(v + k3 * h))
 
     return tuple(v + (k1 + k2 * 2 + k3 * 2 + k4) * (1.0 / 6.0) * h)
+
+
+type LIMITER_FUNC = Callable[[float, float], bool]
 
 
 def iterate(
@@ -27,11 +31,12 @@ def iterate(
     y: float,
     dist: float,
     count: int,
-    limiter: Callable[[float, float], bool],
+    f: VEC_DERIVATIVE,
+    limiter: LIMITER_FUNC = lambda _, __: True,
 ) -> list[tuple[float, float]]:
     result = [(x, y)]
     for _ in range(count):
-        x, y = runge_kutta_4(x, y, dist / count)
+        x, y = runge_kutta_4(x, y, dist / count, f)
 
         if not limiter(x, y):
             break
@@ -71,8 +76,8 @@ def render(args: Namespace, axes: mpl_ax.Axes) -> None:
 
     for y in y_vals:
         for x in x_vals:
-            forward = iterate(x, y, args.len, args.precision, limiter)
-            backward = iterate(x, y, -args.len, args.precision, limiter)
+            forward = iterate(x, y, args.len, args.precision, vec_derivative, limiter)
+            backward = iterate(x, y, -args.len, args.precision, vec_derivative, limiter)
 
             (line,) = axes.plot(*zip(*forward, strict=True))
             axes.plot(*zip(*backward, strict=True), color=line.get_color())
