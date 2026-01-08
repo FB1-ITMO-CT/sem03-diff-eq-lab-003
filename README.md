@@ -87,7 +87,15 @@ J(1, -1) = \begin{pmatrix}0 & -4\\ 1 & 3\end{pmatrix}
 
 <img src="./examples/trajectories.png" style="zoom:50%;" />
 
-Линии графика в разных точках, полученные численным методом. Команда: `run -figsize 12:12 -out "./examples/trajectories.png" traj_map -30 -30 30 30 11 0.1 100`
+Линии графика в разных точках, полученные численным методом. Команда: `run -figsize 12:12 -out "./examples/trajectories.png" traj_map 0.1 100 -30 -30 30 30 11`
+
+<img src="./examples/around_(3;1).png" style="zoom:50%;" /><img src="./examples/around_(1;-1).png" style="zoom:50%;" />
+
+Линии графика вокруг точек равновесия. Пунктиром обозначен график линеаризованной системы, совпадения что-то не наблюдается…
+
+Команда для $(3, 1)$: `run -figsize 8:8 -out "./examples/around_(3;1).png" traj_comp 0.1 50 3.1:1.1 3.1:0.9 2.9:0.9 2.9:1.1`
+
+Команда для $(1, -1)$: `run -figsize 8:8 -out "./examples/around_(1;-1).png" traj_comp 0.1 50 1.1:-1.1 1.1:-0.9 0.9:-0.9 0.9:-1.1`
 
 ## Программная часть
 
