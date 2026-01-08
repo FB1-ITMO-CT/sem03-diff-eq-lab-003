@@ -2,7 +2,10 @@
 
 Построение фазовых траекторий системы.
 
-Система: $\begin{cases}x' = -y \ln(2y^2 - 1)\\ y'= x - y - 2y^2\end{cases}$
+Система:
+```math
+\begin{cases}x' = -y \ln(2y^2 - 1)\\ y'= x - y - 2y^2\end{cases}
+```
 
 Исходный код, а также корректный рендер README находится в [этом репозитории на Github](https://github.com/FB1-ITMO-CT/sem03-diff-eq-lab-003).
 
