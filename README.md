@@ -11,7 +11,7 @@
 ## Аналитическое исследование точек покоя
 
 Положения равновесия определяются из условий $x' = 0$ и $y' = 0$:
-1. Условие $x' = 0$: $-y \ln(2y^2 - 1) = 0 \Rightarrow y = 0 \or \ln(2y^2 - 1) = 0$
+1. Условие $x' = 0$: $-y \ln(2y^2 - 1) = 0 \Rightarrow y = 0 \vee \ln(2y^2 - 1) = 0$
    1. Случай $y = 0$:
       $y' = x - 0 - 2 \cdot 0^2 = x = 0 \Rightarrow x = 0$
       Точка $(0, 0)$.
@@ -37,15 +37,24 @@
 - $\frac{\partial g}{\partial x} = 1$
 - $\frac{\partial g}{\partial y} = -1 - 4y$
 
-Итого, матрица Якоби системы: $$J(x, y) = \begin{pmatrix}0 & -\ln(2y^2 - 1) - \dfrac{4y^2}{2y^2 - 1}\\ 1 & -1 - 4y\end{pmatrix}.$$
+Итого, матрица Якоби системы:
+```math
+J(x, y) = \begin{pmatrix} 0 & -\ln(2y^2 - 1) - \dfrac{4y^2}{2y^2 - 1} \\\ 1 & -1 - 4y \end{pmatrix}
+```
 
 ## Анализ равновесия
 
 ### Точка $(3, 1)$
 
-Матрица Якоби: $J(3, 1) = \begin{pmatrix}0 & -4\\ 1 & -5\end{pmatrix}$
+Матрица Якоби:
+```math
+J(3, 1) = \begin{pmatrix}0 & -4\\ 1 & -5\end{pmatrix}
+```
 
-Характеристическое уравнение: $\det(J - \lambda I) = \begin{vmatrix}-\lambda & -4\\ 1 & -5 - \lambda\end{vmatrix} = \lambda(5 + \lambda) + 4 = \lambda^2 + 5\lambda + 4 = 0$
+Характеристическое уравнение:
+```math
+\det(J - \lambda I) = \begin{vmatrix} -\lambda & -4 \\\ 1 & -5 - \lambda \end{vmatrix} = \lambda(5 + \lambda) + 4 = \lambda^2 + 5\lambda + 4 = 0
+```
 
 Корни: $\lambda_{1,2} = \frac{-5 \pm \sqrt{25 - 16}}{2} = \frac{-5 \pm 3}{2} \Rightarrow \lambda_1 = -1, \quad \lambda_2 = -4$
 
@@ -53,9 +62,15 @@
 
 ### Точка $(1, -1)$
 
-Матрица Якоби: $J(1, -1) = \begin{pmatrix}0 & -4\\ 1 & 3\end{pmatrix}$
+Матрица Якоби:
+```math
+J(1, -1) = \begin{pmatrix}0 & -4\\ 1 & 3\end{pmatrix}
+```
 
-Характеристическое уравнение: $\det(J - \lambda I) = \begin{vmatrix}-\lambda & -4\\ 1 & 3 - \lambda\end{vmatrix} = -\lambda(3 - \lambda) + 4 = \lambda^2 - 3\lambda + 4 = 0.$
+Характеристическое уравнение:
+```math
+\det(J - \lambda I) = \begin{vmatrix} -\lambda & -4 \\\ 1 & 3 - \lambda \end{vmatrix} = -\lambda(3 - \lambda) + 4 = \lambda^2 - 3\lambda + 4 = 0
+```
 
 Дискриминант: $D = 9 - 16 = -7 < 0$, корни: $\lambda_{1,2} = \frac{3 \pm i\sqrt{7}}{2} = 1.5 \pm i \frac{\sqrt{7}}{2}$
 
@@ -63,7 +78,7 @@
 
 ## Фазовые траектории
 
-
+*TODO*
 
 ## Программная часть
 
