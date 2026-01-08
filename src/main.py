@@ -3,17 +3,15 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 
-from src.modes import trajectories
-
-from .modes import dir_map
+from .modes import directions_map, trajectories_map
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
 
     modes = parser.add_subparsers(title="mode", required=True)
-    dir_map.fill_parser(modes.add_parser("dir_map")).set_defaults(module=dir_map)
-    trajectories.fill_parser(modes.add_parser("traj")).set_defaults(module=trajectories)
+    directions_map.fill_parser(modes.add_parser("dir_map")).set_defaults(module=directions_map)
+    trajectories_map.fill_parser(modes.add_parser("traj_map")).set_defaults(module=trajectories_map)
 
     parser.add_argument("-out", type=Path, metavar="img path")
     parser.add_argument("-figsize", type=lambda s: tuple(map(int, s.split(":"))), metavar="h:w", default=(12, 8))
