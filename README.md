@@ -81,13 +81,13 @@ J(1, -1) = \begin{pmatrix}0 & -4\\ 1 & 3\end{pmatrix}
 
 ## Фазовые траектории
 
-<img src="./examples/direction_map.png" style="zoom:66%;" />
+<img src="./examples/direction_map.png" style="zoom:50%;" />
 
 Карта направлений производной. Команда: `run -figsize 12:12 -out "./examples/direction_map.png" dir_map -6 -6 6 6 48`
 
+<img src="./examples/trajectories.png" style="zoom:50%;" />
 
-
-*TODO*
+Линии графика в разных точках, полученные численным методом. Команда: `run -figsize 12:12 -out "./examples/trajectories.png" traj_map -30 -30 30 30 11 0.1 100`
 
 ## Программная часть
 
