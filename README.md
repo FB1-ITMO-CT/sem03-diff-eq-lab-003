@@ -81,6 +81,12 @@ J(1, -1) = \begin{pmatrix}0 & -4\\ 1 & 3\end{pmatrix}
 
 ## Фазовые траектории
 
+<img src="./examples/direction_map.png" style="zoom:66%;" />
+
+Карта направлений производной. Команда: `run -figsize 12:12 -out "./examples/direction_map.png" dir_map -6 -6 6 6 48`
+
+
+
 *TODO*
 
 ## Программная часть
